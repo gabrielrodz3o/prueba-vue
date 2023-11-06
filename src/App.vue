@@ -9,7 +9,10 @@ const { orders } = storeToRefs(store)
 
 <template>
   <div>
+    
     <div class=" flex flex-wrap justify-content-end gap-4 pa-1 " style="margin-right: 10px;margin-top: 15px;">
+      <router-link to="/">    <i class="pi pi-home"  style="font-size: 2rem"></i></router-link>
+      
       <router-link to="/cart"><i v-badge="orders.length" class="pi pi-fw pi-shopping-cart"
           style="font-size: 2rem" /></router-link>
 
