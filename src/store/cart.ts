@@ -29,7 +29,7 @@ export const useCartStore = defineStore("cart", () => {
         }
    
   };
- const totalPrice= computed(() => orders.value.reduce((total, producto, index) => {
+ const totalPrice= computed(() => orders.value.reduce((total, producto) => {
 
   const subtotal = producto.price * producto.quantity;
   return total + subtotal;

@@ -4,12 +4,16 @@
   
   <script setup lang="ts">
   import { ref } from 'vue';
-  
-  interface Props {
-    categories: Array<string[]>[];
+  interface Categories {
+    name: string
+}
+  const props = defineProps({
+    categories: {
+    type: Array as () => Categories[],
+    required: true
+  }
+});
 
-    }
-    const props = defineProps<Props>();
      
     const emits = defineEmits(['update-categories']);
 

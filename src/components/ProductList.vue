@@ -51,7 +51,7 @@
                             <span class="text-2xl font-semibold">${{ slotProps.data.price }}</span>
                             <!-- <i v-badge="3" class="pi pi-shopping-cart"
           style="font-size: 2rem" /> -->
-                            <Button @click="addItem( slotProps.data)" icon="pi pi-shopping-cart"  :badge="orders.find((element:Products)=>element.id===slotProps.data.id)?.quantity"  rounded></Button>
+          <Button @click="addItem(slotProps.data)" icon="pi pi-shopping-cart" :badge="orders.find((element: Products) => element.id === slotProps.data.id)?.quantity !== undefined ? orders.find((element: Products) => element.id === slotProps.data.id)?.quantity.toString() : undefined" rounded></Button>
                         </div>
                     </div>
                 </div>
@@ -67,11 +67,12 @@ import { ref } from 'vue';
 import { useCartStore } from '../store/cart';
 import { Products } from '../types/products';
 import { storeToRefs } from 'pinia';
-interface Props {
-    products: Array<Products>[];
-
-}
-const props = defineProps<Props>();
+const props = defineProps({
+  products: {
+    type: Array as () => Products[],
+    required: true
+  }
+});
 const store = useCartStore()
 const {orders}=storeToRefs(store)
 
